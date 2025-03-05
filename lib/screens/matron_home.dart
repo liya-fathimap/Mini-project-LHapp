@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:app/matron-homescreens/matron_attendance.dart';
 import 'package:app/matron-homescreens/matron_complaint.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -75,6 +76,7 @@ class _MatronHomePageState extends State<MatronHomePage> {
               ),
               children: [
                 buildComplaintTile(context),
+                buildAttendanceTile(context),
               ],
             ),
           ],
@@ -105,6 +107,37 @@ class _MatronHomePageState extends State<MatronHomePage> {
             const SizedBox(height: 10),
             Text(
               "View Complaints",
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF1E1E1E)), 
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget buildAttendanceTile(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => AttendanceApp()),
+        );
+      },
+      child: Container(
+        padding: const EdgeInsets.all(15),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: const Color(0xFFC8E3C7), width: 2), 
+          color: const Color(0xFFEAF4E2), 
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.checklist, size: 40, color: const Color(0xFF4CAF50)), 
+            const SizedBox(height: 10),
+            Text(
+              "Mark Attendance",
               style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF1E1E1E)), 
               textAlign: TextAlign.center,
             ),
